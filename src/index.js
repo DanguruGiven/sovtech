@@ -1,14 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
 import './index.css';
+import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Client from './client/index';
+import App from './app/index';
 import reportWebVitals from './reportWebVitals';
-// import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import store from './store';
+
+const client = new ApolloClient({ uri: 'http://localhost:4000/' })
 
 ReactDOM.render(
   <React.StrictMode>
-    <Client />
+    
+      <ApolloProvider client={client} >
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+        </Provider>
+      </ApolloProvider>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );

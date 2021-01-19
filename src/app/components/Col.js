@@ -21,4 +21,9 @@ Col12.propTypes = {
     children: PropTypes.any,
 };
 
+export const ColR = ({ children }) => <div className="col-12 col-md-6 col-lg-6">{children}</div>;
+ColR.propTypes = {
+    children: PropTypes.any,
+};
+
 export default { Col, ColAuto, Col6, Col12 };

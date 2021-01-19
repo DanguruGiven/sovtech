@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import Avatar from './Avatar';
 import Row from './Row';
 import { ColAuto, Col } from './Col';
-import Badge from './Badge';
 import { Paragraph } from './Typography';
-import Button from './Button';
+
+import { Link } from 'react-router-dom';
 
 const CardContainer = styled.div `
     box-shadow: 5px 5px 8px #E0E0E0;
@@ -16,9 +16,7 @@ const CardContainer = styled.div `
     margin: ${props => props.margin};
 `
 
-const src = 'https://images.unsplash.com/photo-1529736576495-1ed4a29ca7e1?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=752&q=80';
-
-export const Card = ({ margin }) => {
+export const Card = ({ margin, text, src }) => {
     return(
         <CardContainer margin={margin}>
             <Row>
@@ -26,9 +24,7 @@ export const Card = ({ margin }) => {
                     <Avatar src={src} width={80} height={80} alt="" />
                 </ColAuto>
                 <Col>
-                    <Badge text="animal" />
-                    <Paragraph>Chuck Norris is the reason why babies cry.</Paragraph>
-                    <Button label="view joke"/>
+                    <Paragraph>{text}</Paragraph>
                 </Col>
             </Row>
         </CardContainer>
@@ -37,9 +33,11 @@ export const Card = ({ margin }) => {
 
 Card.propTypes = {
     margin: PropTypes.string,
+    text: PropTypes.string,
+    src: PropTypes.any,
 };
 
-export const CardItem = ({ label, onClick, margin }) => {
+export const CardItem = ({ label, onClick, margin, to }) => {
     return(
         <CardContainer margin={margin} onClick={onClick}>
             <Row>
@@ -47,7 +45,7 @@ export const CardItem = ({ label, onClick, margin }) => {
                     <Paragraph marginBottom={0}>{label}</Paragraph>
                 </Col>
                 <ColAuto>
-                    <Paragraph transform="capitalize" marginBottom={0}>&gt;</Paragraph>
+                    <Link to={to}>&gt;</Link>
                 </ColAuto>
             </Row>
         </CardContainer>
@@ -58,8 +56,7 @@ CardItem.propTypes = {
     label: PropTypes.string,
     onClick: PropTypes.func,
     margin: PropTypes.string,
+    to: PropTypes.string,
 };
 
 export default { Card, CardItem };
-
-// https://images.unsplash.com/photo-1529736576495-1ed4a29ca7e1?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=752&q=80

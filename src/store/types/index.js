@@ -1,0 +1,6 @@
+export const GET_CATEGORIES_LIST = 'GET_CATEGORIES_LIST'
+export const GET_ERROR = 'GET_ERROR'
+export const GET_CATEGORIES_LOADING = 'GET_CATEGORIES_LOADING'
+export const GET_JOKE = 'GET_JOKE'
+export const JOKE_ERROR = 'JOKE_ERROR'
+export const JOKE_LOADING = 'JOKE_LOADING'
