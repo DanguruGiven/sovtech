@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { Route, Switch, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { getError, getLoading, getJokeLoading, getJokeError, getJoke } from '../store/actions';
+import { getError, getLoading, getJokeLoading, getJokeError, getJoke, getCategories } from '../store/actions';
 
 import Components from './components';
 import { Typography1 } from './components/Typography';
@@ -14,12 +14,14 @@ import { CardItem, Card } from './components/Card';
 const Container = Components.Container;
 const Row = Components.Row;
 
+//gql categories query
 const GET_CATEGORIES = gql`
 {
     categories
 }
 `
 
+//gql query for jokes
 const GET_JOKE = gql`
     query($category: String!){
         joke(category: $category) {
@@ -29,6 +31,7 @@ const GET_JOKE = gql`
     }
 `
 
+//Component to display the joke
 const JokeDetails = () => {
 
     let { category } = useParams();
@@ -59,20 +62,26 @@ const JokeDetails = () => {
     )
 }
 
+//Main component that show the list of categories
 const App = () => {
 
     const { loading, error, data } = useQuery(GET_CATEGORIES);
 
+    //Dispatch Hook
     const dispatch = useDispatch();
 
     const [search, setSearch] = useState("");
     const [filteredCategories, setFilteredCategories] = useState([]);
 
+
+    //UseEffect to dispatch actions from redux
     useEffect(() => {
+        dispatch(getCategories(data.categories))
         dispatch(getLoading(loading))
         dispatch(getError(error))
     })
 
+    //UseEffect to filter data for search
     useEffect(() => {
         setFilteredCategories(
             data.categories.filter(category => category.toLowerCase().includes(search.toLowerCase()))
