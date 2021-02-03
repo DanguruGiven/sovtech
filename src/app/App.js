@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { Route, Switch, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { getError, getLoading, getJokeLoading, getJokeError, getJoke, getCategories } from '../store/actions';
+import { getError, getLoading, getJokeLoading, getJokeError, getJoke } from '../store/actions';
 
 import Components from './components';
 import { Typography1 } from './components/Typography';
@@ -66,6 +66,7 @@ const JokeDetails = () => {
 const App = () => {
 
     const { loading, error, data } = useQuery(GET_CATEGORIES);
+    const { categories } = data;
 
     //Dispatch Hook
     const dispatch = useDispatch();
@@ -76,7 +77,6 @@ const App = () => {
 
     //UseEffect to dispatch actions from redux
     useEffect(() => {
-        dispatch(getCategories(data.categories))
         dispatch(getLoading(loading))
         dispatch(getError(error))
     })
@@ -84,9 +84,9 @@ const App = () => {
     //UseEffect to filter data for search
     useEffect(() => {
         setFilteredCategories(
-            data.categories.filter(category => category.toLowerCase().includes(search.toLowerCase()))
+            categories && categories.filter(category => category.toLowerCase().includes(search.toLowerCase()))
         );
-    }, [search, filteredCategories, data.categories])
+    }, [search, filteredCategories, categories])
 
     if (error) return <h4>Something went wrong</h4>
     if (loading) return <h4>Loading....</h4>
@@ -104,7 +104,7 @@ const App = () => {
                 </Col>
             </Row>
             <Row>
-                <ColR>
+                <ColR style={{height: '80vh', overflow: 'auto'}}>
                     {
                         filteredCategories && filteredCategories.map((jokeCategory, i) => (
                             <Row key={i}>
