@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { Route, Switch, useParams } from 'react-router-dom';
@@ -67,6 +67,8 @@ const App = () => {
 
     const { loading, error, data } = useQuery(GET_CATEGORIES);
     const { categories } = data;
+    console.log(data.categories);
+    
 
     //Dispatch Hook
     const dispatch = useDispatch();
@@ -86,13 +88,14 @@ const App = () => {
         setFilteredCategories(
             categories && categories.filter(category => category.toLowerCase().includes(search.toLowerCase()))
         );
-    }, [search, filteredCategories, categories])
+    }, [search, categories])
 
     if (error) return <h4>Something went wrong</h4>
     if (loading) return <h4>Loading....</h4>
     
     return(
-        <Container>
+        <Suspense fallback={<h4>Loading Data</h4>}>
+            <Container>
             <Row>
                 <Col>
                     <Typography1>chuck Norris Jokes</Typography1>
@@ -122,6 +125,7 @@ const App = () => {
                 </ColR>
             </Row>
         </Container>
+        </Suspense>
     )
 }
 
