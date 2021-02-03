@@ -11,7 +11,7 @@ const Search = styled.input`
     margin: 20px auto;
 `
 
-export const SearchField = ({ value, type, placeholder, id, autoComplete, name, onChange }) => <Search value={value} type={type} placeholder={placeholder} id={id} autoComplete={autoComplete} name={name} onChange={onChange} />;
+const SearchField = ({ value, type, placeholder, id, autoComplete, name, onChange }) => <Search value={value} type={type} placeholder={placeholder} id={id} autoComplete={autoComplete} name={name} onChange={onChange} />;
 SearchField.propTypes = {
     value: PropTypes.string,
     type: PropTypes.string,
@@ -22,4 +22,4 @@ SearchField.propTypes = {
     onChange: PropTypes.func,
 };
 
-export default { SearchField };
+export default SearchField;
