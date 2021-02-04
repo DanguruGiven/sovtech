@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Avatar from './Avatar';
 import Row from './Row';
-import { ColAuto, Col } from './Col';
+import Col, { ColAuto } from './Col';
 import { Paragraph } from './Typography';
 
 import { Link } from 'react-router-dom';
@@ -58,5 +58,3 @@ CardItem.propTypes = {
     margin: PropTypes.string,
     to: PropTypes.string,
 };
-
-export { Card, CardItem };

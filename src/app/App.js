@@ -6,9 +6,9 @@ import { useDispatch } from 'react-redux';
 import { getError, getLoading, getJokeLoading, getJokeError, getJoke } from '../store/actions';
 
 import Components from './components';
-import { Typography1 } from './components/Typography';
+import Typography1 from './components/Typography';
 import SearchField from './components/TextField';
-import { Col, Col12, ColR } from './components/Col';
+import Col, { Col12, ColR } from './components/Col';
 import { CardItem, Card } from './components/Card';
 
 const Container = Components.Container;

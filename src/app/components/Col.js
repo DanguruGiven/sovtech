@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Col = ({ children, style }) => <div className="col" style={style}>{children}</div>;
+const Col = ({ children, style }) => <div className="col" style={style}>{children}</div>;
 Col.propTypes = {
     children: PropTypes.any,
     style: PropTypes.object,
@@ -31,4 +31,4 @@ ColR.propTypes = {
     style: PropTypes.object,
 };
 
-export { Col, ColAuto, Col6, Col12 };
+export default Col;

@@ -39,7 +39,7 @@ const P = styled.p`
     text-transform: ${props => props.transform};
 `;
 
-export const Typography1 = ({ children, color, align }) => <H1 color={color} align={align}>{children}</H1>;
+const Typography1 = ({ children, color, align }) => <H1 color={color} align={align}>{children}</H1>;
 
 Typography1.propTypes = {
     children: PropTypes.string,
@@ -97,4 +97,4 @@ Paragraph.propTypes = {
     transform: PropTypes.string,
 };
 
-export { Typography1, Typography2, Typography3, Typography4, Typography5, Typography6, Paragraph };
+export default Typography1;
