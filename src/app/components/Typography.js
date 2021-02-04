@@ -97,4 +97,4 @@ Paragraph.propTypes = {
     transform: PropTypes.string,
 };
 
-export default { Typography1, Typography2, Typography3, Typography4, Typography5, Typography6, Paragraph };
+export { Typography1, Typography2, Typography3, Typography4, Typography5, Typography6, Paragraph };

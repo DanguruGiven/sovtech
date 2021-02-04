@@ -59,4 +59,4 @@ CardItem.propTypes = {
     to: PropTypes.string,
 };
 
-export default { Card, CardItem };
+export { Card, CardItem };

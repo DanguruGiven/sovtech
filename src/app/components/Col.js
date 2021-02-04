@@ -31,4 +31,4 @@ ColR.propTypes = {
     style: PropTypes.object,
 };
 
-export default { Col, ColAuto, Col6, Col12 };
+export { Col, ColAuto, Col6, Col12 };

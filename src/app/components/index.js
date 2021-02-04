@@ -7,4 +7,4 @@ import Avatar from './Avatar';
 import Badge from './Badge';
 import Button from './Button';
 
-export default  { Container, Row, Col, Typography, Card, CardItem, Avatar, Badge, Button };
+export  { Container, Row, Col, Typography, Card, CardItem, Avatar, Badge, Button };
